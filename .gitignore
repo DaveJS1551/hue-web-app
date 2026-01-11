@@ -1,0 +1,5 @@
+hue-frontend/src/App.jsx
+hue-backend/node_modules
+hue-frontend/node_modules
+/node_modules
+.env
