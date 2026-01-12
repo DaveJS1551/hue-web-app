@@ -5,6 +5,35 @@
   text-align: center;
 }
 
+body {
+  background-color: black;
+  background-image:
+    radial-gradient(red, rgba(255, 0, 0, 0.2) 2px, transparent 40px),
+    radial-gradient(rgb(255, 153, 0), rgba(255, 0, 221, 0.15) 1px, transparent 30px),
+    radial-gradient(yellow, rgba(255, 238, 0, 0.1) 2px, transparent 40px),
+    radial-gradient(green, rgba(9, 255, 0, 0.1) 2px, transparent 40px),
+    radial-gradient(cyan, rgba(0, 204, 255, 0.1) 2px, transparent 40px),
+    radial-gradient(blue, rgba(0, 4, 255, 0.1) 2px, transparent 40px),
+    radial-gradient(rgb(204, 0, 255), rgba(247, 0, 255, 0.1) 2px, transparent 40px),
+    radial-gradient(rgb(255, 255, 255), rgba(255,255,255,.1) 2px, transparent 30px);
+  background-size: 550px 550px,  /* red */
+                    350px 350px, /* orange */ 
+                    250px 250px, /* yellow */
+                    225px 225px, /* green */ 
+                    325px 325px, /* cyan */
+                    275px 275px, /* blue */
+                    375px 375px, /* purple */
+                    225px 225px; /* white */
+  background-position: 0 0,        /* red */
+                      40px 60px,   /* orange */
+                      130px 270px, /* yellow */
+                      70px 100px,  /* green */
+                      115px 300px,  /* cyan */
+                      50px 75px,  /* blue */
+                      200px 250x,  /* purple */
+                      100px 100px;   /* white */
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -56,11 +85,12 @@
   border: 2px solid #ffc107;
   color: #664d03;
   font-weight: 600;
+  box-shadow: 0 0px 15px 20px rgba(255, 255, 255, 0.12);
 }
 
 .light-off {
   background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
+  border: 2px solid #dee2e6;
   color: #6c757d;
   font-weight: normal;
 }
