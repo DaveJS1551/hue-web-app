@@ -53,8 +53,6 @@ app.get('/api/lights', (req, res) => {
         return res.status(500).json({error: "Hue bridge config is missing from .env"});
     }
 
-    console.log("here")
-
     const url = `/api/${HUE_USERNAME}/lights`
     
     http.get(`http://${HUE_BRIDGE_IP}${url}`, (hueRes) => {

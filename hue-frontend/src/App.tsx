@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { useEffect } from 'react';
+import { fetchLights, toggleLight} from './features/lights/services/lightService';
 
 function App() {
   const [lights, setLights] = useState([]);
@@ -25,12 +26,12 @@ function App() {
       });
   }, [])
 
-  const toggleLight = async (lightID, isCurrentlyOn) => {
+  const toggleLight = async (lightId, isCurrentlyOn) => {
     const newState = !isCurrentlyOn;
 
     setLights(prev => 
       prev.map(l => 
-        l.id === lightID ? { ...l, state: { ...l.state, on: newState}} : l
+        l.id === lightId ? { ...l, state: { ...l.state, on: newState}} : l
       )
     );
 
@@ -63,6 +64,7 @@ function App() {
     }
   }
 
+
   if (loading) return <div>Loading lights...</div>
   if (error) return <div>Error: {error}</div>
 
@@ -79,6 +81,7 @@ function App() {
         <ul>
           {lights.map((light) => {
             const isOn = light.state?.on ?? false;
+            const cMode = light.state?.colormode ?? ct;
 
             return (
               <li
@@ -87,18 +90,33 @@ function App() {
               >
                 <div>
                   <div>
-                    <strong>{light.name || `Light ${light.id}`}</strong>
-                    {' - '}
-                    {isOn ? 'On' : 'Off'}
-                    {isOn && ` (bri: ${light.state?.bri})`}
+                    <button class='header-button'
+                      onClick={() => toggleLight(light.id, isOn)}
+                    ><strong>{light.name || `Light ${light.id}`}</strong></button>
                   </div>
 
-                  <button
-                    className="toggle-btn"
-                    onClick={() => toggleLight(light.id,isOn)}
-                  >
-                      {isOn ? 'Turn Off' : 'Turn On'}
-                  </button>
+                  <div>
+                    {cMode === 'ct' && (
+                      <div class="stats">
+                      <p><strong>CT: </strong>{light.state?.ct} </p>
+                      </div>
+                    )}
+
+                    {cMode === 'hs' && (
+                      <div class="stats">
+                        <p><strong>Hue:</strong> {light.state?.hue}</p>
+                        <p><strong>Sat:</strong> {light.state?.sat}</p>
+                        
+                      </div>
+                    )}
+                  </div>
+
+                  <div id="light-footer">
+                    <p><strong>Bri:</strong> {light.state?.bri}</p>
+                    
+                    
+                  </div>
+                  
                 </div>
               </li>
             )

@@ -62,6 +62,10 @@ body {
   }
 }
 
+h3 {
+  margin: 0;
+}
+
 .card {
   padding: 2em;
 }
@@ -71,8 +75,8 @@ body {
 }
 
 .light-item {
-  padding: 14px 16px;
-  margin: 10px 0;
+  padding: 6px 16px;
+  margin: 5px 0;
   border-radius: 10px;
   list-style: none;
   transition: all 0.25s ease;
@@ -85,7 +89,8 @@ body {
   border: 2px solid #ffc107;
   color: #664d03;
   font-weight: 600;
-  box-shadow: 0 0px 15px 20px rgba(255, 255, 255, 0.12);
+  /*          hOff vOff Blur   Spread  Color   (inset)*/
+  box-shadow: 0    0px  40px   20px   rgba(255, 255, 255, 0.12);
 }
 
 .light-off {
@@ -98,3 +103,77 @@ body {
 .light-item strong {
   margin-left: 6px;
 }
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+}
+
+.stats p {
+  margin: 0;
+}
+
+#light-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+}
+
+#light-footer p {
+  margin: 5px;
+}
+
+.toggle-btn {
+  border-radius: 8px;
+  padding: 0.6em 1.2em;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  color: rgb(27, 27, 27);
+  background-color: #f8f9fa;
+  transition: all 0.1s ease-out;
+}
+
+.toggle-btn:hover {
+  box-shadow: 0 0 2px 2px #595a01;
+}
+
+.header-button {
+  border-radius: 12px;
+  font-size: 1.2em;
+  font-family: inherit;
+  font-weight: 500;
+  width: 100%;
+  background-color: #f8f9fa;
+  color: rgb(27, 27, 27);
+  transition: all 0.15s ease-out;
+}
+
+.header-button:hover {
+  box-shadow: 0 0 2px 2px #595a01;
+}
+
+/*
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+*/
