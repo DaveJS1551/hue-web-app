@@ -4,66 +4,28 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { useEffect } from 'react';
 import { fetchLights, toggleLight} from './features/lights/services/lightService';
+import type { LightState, Light} from './features/lights/types';
 
 function App() {
-  const [lights, setLights] = useState([]);
+  const [lights, setLights] = useState<Light[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string |null>(null);
 
   useEffect(() => {
-    fetch('http://localhost:1551/api/lights')
-      .then(res => {
-        if (!res.ok) throw new Error("Failed to fetch lights");
-        return res.json();
-      })
-      .then (data => {
-        setLights(data.lights || []);
+    const loadLights = async () => {
+      try {
+        setLoading(true);
+        const fetchedLights = await fetchLights();
+        setLights(fetchedLights)
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Failed to load lights");
+      } finally {
         setLoading(false);
-      })
-      .catch(err => {
-        setError(err.message);
-        setLoading(false);
-      });
+      }
+    };
+
+    loadLights();
   }, [])
-
-  const toggleLight = async (lightId, isCurrentlyOn) => {
-    const newState = !isCurrentlyOn;
-
-    setLights(prev => 
-      prev.map(l => 
-        l.id === lightId ? { ...l, state: { ...l.state, on: newState}} : l
-      )
-    );
-
-    try {
-      const response = await fetch(`http://localhost:1551/api/lights/${lightID}/state`, {
-        method: "PUT",
-        headers: { 'Content-Type': 'application/json'},
-        body: JSON.stringify({on: newState})
-      });
-
-      if (!response.ok) {
-        throw new Error('Toggle Failed');
-      };
-
-      setTimeout(() => {
-        fetch('http://localhost:1551/api/lights')
-          .then(res => res.json())
-          .then(data = setLights(data.lights || []));
-      }, 800)
-    } catch (err) {
-      console.error(err);
-
-      setLights(prev => 
-        prev.map(l =>
-          l.id === lightID ? { ...l, state: { ...l.state, on: isCurrentlyOn } } : l
-        )
-      );
-
-      alert('Could not change light state - check console');
-    }
-  }
-
 
   if (loading) return <div>Loading lights...</div>
   if (error) return <div>Error: {error}</div>
@@ -81,7 +43,7 @@ function App() {
         <ul>
           {lights.map((light) => {
             const isOn = light.state?.on ?? false;
-            const cMode = light.state?.colormode ?? ct;
+            const cMode = light.state?.colormode ?? "ct";
 
             return (
               <li
@@ -90,20 +52,20 @@ function App() {
               >
                 <div>
                   <div>
-                    <button class='header-button'
+                    <button className='header-button'
                       onClick={() => toggleLight(light.id, isOn)}
                     ><strong>{light.name || `Light ${light.id}`}</strong></button>
                   </div>
 
                   <div>
                     {cMode === 'ct' && (
-                      <div class="stats">
+                      <div className="stats">
                       <p><strong>CT: </strong>{light.state?.ct} </p>
                       </div>
                     )}
 
                     {cMode === 'hs' && (
-                      <div class="stats">
+                      <div className="stats">
                         <p><strong>Hue:</strong> {light.state?.hue}</p>
                         <p><strong>Sat:</strong> {light.state?.sat}</p>
                         
