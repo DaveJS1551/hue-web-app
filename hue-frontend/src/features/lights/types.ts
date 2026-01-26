@@ -1,13 +1,14 @@
-interface LightState {
+export interface LightState {
     on: boolean;
     bri?: number;
     hue?: number;
     sat?: number;
     ct?: number;
-    xy?: [number, number]
+    xy?: [number, number];
+    colormode?: 'ct' | 'hs' | 'xy'
 }
 
-interface Light {
+export interface Light {
     id: string,
     name?: string,
     state: LightState

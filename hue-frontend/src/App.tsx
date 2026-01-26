@@ -1,10 +1,9 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { useEffect } from 'react';
 import { fetchLights, toggleLight} from './features/lights/services/lightService';
 import type { LightState, Light} from './features/lights/types';
+import { LightItem } from './features/lights/components/LightItem';
 
 function App() {
   const [lights, setLights] = useState<Light[]>([]);
@@ -38,53 +37,16 @@ function App() {
       <h1>My Hue Lights</h1>
 
       {lights.length === 0 ? (
-        <p>No lights found</p>
+        <p>No Lights Found</p>
       ) : (
-        <ul>
-          {lights.map((light) => {
-            const isOn = light.state?.on ?? false;
-            const cMode = light.state?.colormode ?? "ct";
-
-            return (
-              <li
-                key={light.id}
-                className={`light-item ${isOn ? 'light-on' : 'light-off'}`}
-              >
-                <div>
-                  <div>
-                    <button className='header-button'
-                      onClick={() => toggleLight(light.id, isOn)}
-                    ><strong>{light.name || `Light ${light.id}`}</strong></button>
-                  </div>
-
-                  <div>
-                    {cMode === 'ct' && (
-                      <div className="stats">
-                      <p><strong>CT: </strong>{light.state?.ct} </p>
-                      </div>
-                    )}
-
-                    {cMode === 'hs' && (
-                      <div className="stats">
-                        <p><strong>Hue:</strong> {light.state?.hue}</p>
-                        <p><strong>Sat:</strong> {light.state?.sat}</p>
-                        
-                      </div>
-                    )}
-                  </div>
-
-                  <div id="light-footer">
-                    <p><strong>Bri:</strong> {light.state?.bri}</p>
-                    
-                    
-                  </div>
-                  
-                </div>
-              </li>
-            )
-          })}
-        </ul>
-      )}
+        <ul style={{listStyle: 'none', padding: 0}}>
+          {lights.map(light => (
+            <LightItem key={light.id} light={light} />
+          ))}
+        </ul> 
+      )
+    
+    }; 
 
     </div>
 

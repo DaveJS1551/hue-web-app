@@ -1,5 +1,6 @@
 import type { Light, LightState} from '../types'
 
+
 const API_BASE = 'http://localhost:1551/api/lights'
 
 export const fetchLights = async (): Promise<Light[]> => {

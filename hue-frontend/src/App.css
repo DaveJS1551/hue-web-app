@@ -74,58 +74,6 @@ h3 {
   color: #888;
 }
 
-.light-item {
-  padding: 6px 16px;
-  margin: 5px 0;
-  border-radius: 10px;
-  list-style: none;
-  transition: all 0.25s ease;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-
-.light-on {
-  background-color: #fff3cd;
-  border: 2px solid #ffc107;
-  color: #664d03;
-  font-weight: 600;
-  /*          hOff vOff Blur   Spread  Color   (inset)*/
-  box-shadow: 0    0px  40px   20px   rgba(255, 255, 255, 0.12);
-}
-
-.light-off {
-  background-color: #f8f9fa;
-  border: 2px solid #dee2e6;
-  color: #6c757d;
-  font-weight: normal;
-}
-
-.light-item strong {
-  margin-left: 6px;
-}
-
-.stats {
-  display: flex;
-  justify-content: space-around;
-  margin: 0;
-  padding: 0;
-}
-
-.stats p {
-  margin: 0;
-}
-
-#light-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 0;
-}
-
-#light-footer p {
-  margin: 5px;
-}
 
 .toggle-btn {
   border-radius: 8px;

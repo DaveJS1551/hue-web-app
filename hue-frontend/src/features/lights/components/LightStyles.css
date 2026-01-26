@@ -1,0 +1,143 @@
+
+.light-item {
+  padding: 6px 16px;
+  margin: 5px 0;
+  border-radius: 10px;
+  list-style: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.light-on {
+  background-color: #fff3cd;
+  border: 2px solid #ffc107;
+  color: #664d03;
+  font-weight: 600;
+  /*          hOff vOff Blur   Spread  Color   (inset)*/
+  box-shadow: 0    0px  40px   20px   rgba(255, 255, 255, 0.12);
+}
+
+.light-off {
+  background-color: #f8f9fa;
+  border: 2px solid #dee2e6;
+  color: #6c757d;
+  font-weight: normal;
+}
+
+.light-item strong {
+  margin-left: 6px;
+}
+
+
+/* Light body, the grid with the 3 sections on it */
+.light-body {
+    display: grid;
+    grid-template-columns: 75px auto;
+    grid-template-rows: 2fr 1fr;
+    align-items: start; 
+    padding: 12px 0;
+}
+
+
+.mode-select-div {
+    background-color: lightgrey ;
+    border-radius: 5px;
+    grid-column: 1;
+    grid-row: 1/3;
+    display: flex;
+    flex-direction: column;
+    margin: 0 5px 0 0; 
+    height: 100%;
+    justify-content: space-between;
+}
+
+.mode-select-div * {
+    padding: 4px 0;
+}
+
+.prop-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(141, 20, 20, 0.5);
+    height: 100%;
+}
+
+.prop-div label {
+    font-size: 1.3rem;
+    width: 50px;
+}
+
+
+.prop-slider {
+    -webkit-appearance: none;   /* ← Crucial: removes default look */
+    appearance: none;
+    width: 75%;
+    margin: 0;
+    padding: 0;
+    padding-block-end: 0;
+    background-color: blue;
+    border-radius: 8px;
+}
+
+/* The track (filled part) */
+.prop-slider::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    background: #4e414c;
+    border-radius: 10px;
+    padding-block-end: 0;
+}
+
+/* The thumb (the circle/handle you drag) */
+.prop-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #ffc107;        /* your accent color */
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -6px;           /* centers thumb on track */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    padding-block-end: 0;
+}
+
+.prop-slider::-webkit-slider-thumb:active {
+    background: #e0a800;        /* darker when dragging */
+}
+
+
+
+.stats {
+  grid-column: 2;
+  grid-row: 1;
+  border-radius: 8px;
+  padding: 0px;
+  margin: 0;
+  text-align: left;
+  height: 50px;
+
+}
+
+.stats div {
+    padding-top: 5px;
+    margin: 0;
+    height: 1fr;
+}
+
+
+
+
+
+
+.brightness-div {
+  grid-column: 2;
+  grid-row: 2;
+  padding: 10px 0;
+  text-align: left;
+  background-color: rgba(50, 255, 51, 0.5);
+}
