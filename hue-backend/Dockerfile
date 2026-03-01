@@ -13,6 +13,7 @@ WORKDIR /app
 
 # Copy package files first for caching
 COPY package*.json ./
+RUN ls -la /app > /app/files.txt && cat /app/files.txt
 
 # Install dependencies — should use correct prebuilt binary for amd64
 RUN npm ci

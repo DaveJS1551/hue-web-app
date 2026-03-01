@@ -44,7 +44,6 @@ jobs:
           tags: ghcr.io/${{ steps.owner.outputs.owner }}/hue-web-app-backend:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          no-cache: true
 
       # ====================== FRONTEND (both architectures) ======================
       - name: Build & push frontend (arm/v7 + arm64)
@@ -57,4 +56,3 @@ jobs:
           tags: ghcr.io/${{ steps.owner.outputs.owner }}/hue-web-app-frontend:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          no-cache: true
