@@ -15,7 +15,7 @@ const HUE_BRIDGE_IP = process.env.HUE_BRIDGE_IP;
 const HUE_USERNAME = process.env.HUE_USERNAME;
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: true,
     credentials: true
 }));
 
