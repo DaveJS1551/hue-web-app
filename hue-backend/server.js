@@ -20,7 +20,27 @@ app.use(cors({
     credentials: true
 }));
 */
+app.use(cors({
+  origin: (origin, callback) => {
+    console.log('Incoming request Origin header:', origin);  // ← log to see what arrives
 
+    // Allow localhost dev + your Pi IP (add more IPs if needed)
+    const allowed = [
+      'http://localhost:3000',
+      'http://192.168.40.193:3000',   // ← your Pi IP
+      'http://192.168.40.193',        // without port if needed
+    ];
+
+    if (!origin || allowed.includes(origin)) {
+      callback(null, origin || '*');  // reflect or fallback
+    } else {
+      callback(new Error(`Origin ${origin} not allowed`));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 
 app.get('/', (req, res) => {
   res.send('Hue backend is running! 🚀');
