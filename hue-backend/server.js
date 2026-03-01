@@ -14,19 +14,13 @@ const PORT = 2308;
 const HUE_BRIDGE_IP = process.env.HUE_BRIDGE_IP;
 const HUE_USERNAME = process.env.HUE_USERNAME;
 
-const getApiBase = () => {
-  if (import.meta.env.DEV) {
-    // Dev: proxy or localhost
-    return 'http://localhost:2308';
-  }
-  // Production (on Pi or deployed): same host as frontend, different port
-  return window.location.origin.replace(/:3000$/, ':2308');
-}; 
-
+/*
 app.use(cors({
     origin: true,
     credentials: true
 }));
+*/
+
 
 app.get('/', (req, res) => {
   res.send('Hue backend is running! 🚀');
