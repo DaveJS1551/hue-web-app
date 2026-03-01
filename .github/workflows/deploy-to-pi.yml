@@ -33,24 +33,24 @@ jobs:
         id: owner
         run: echo "owner=${GITHUB_REPOSITORY_OWNER,,}" >> "$GITHUB_OUTPUT"
 
-      # ====================== BACKEND (both architectures) ======================
+      # ====================== BACKEND ======================
       - name: Build & push backend (arm/v7 + arm64)
         uses: docker/build-push-action@v5
         with:
-          context: ./hue-backend
-          file: ./hue-backend/Dockerfile
+          context: .                          # ← CHANGED: root of repo
+          file: ./hue-backend/Dockerfile      # ← full path to Dockerfile
           platforms: linux/arm/v7,linux/arm64
           push: true
           tags: ghcr.io/${{ steps.owner.outputs.owner }}/hue-web-app-backend:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      # ====================== FRONTEND (both architectures) ======================
+      # ====================== FRONTEND ======================
       - name: Build & push frontend (arm/v7 + arm64)
         uses: docker/build-push-action@v5
         with:
-          context: ./hue-frontend
-          file: ./hue-frontend/Dockerfile
+          context: .                          # ← CHANGED: root
+          file: ./hue-frontend/Dockerfile     # ← full path
           platforms: linux/arm/v7,linux/arm64
           push: true
           tags: ghcr.io/${{ steps.owner.outputs.owner }}/hue-web-app-frontend:latest
