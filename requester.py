@@ -2,7 +2,7 @@ import requests
 import json
 
 # ================= CONFIG =================
-BACKEND_URL = "http://localhost:1551"          # Change if your server runs on different port/host
+BACKEND_URL = "http://localhost:2308"          # Change if your server runs on different port/host
 LIGHT_ID    = "1"                              # Which light you want to control (as string)
 # ==========================================
 

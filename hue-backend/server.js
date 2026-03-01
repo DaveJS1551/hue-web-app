@@ -9,13 +9,13 @@ const cors = require('cors');
 require('dotenv').config()
 const app = express();
 app.use(express.json());
-const PORT = 1551;
+const PORT = 2308;
 
 const HUE_BRIDGE_IP = process.env.HUE_BRIDGE_IP;
 const HUE_USERNAME = process.env.HUE_USERNAME;
 
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'http://localhost:3000',
     credentials: true
 }));
 

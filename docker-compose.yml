@@ -1,0 +1,17 @@
+services:
+  frontend:
+    build: ./hue-frontend
+    ports:
+      - "3000:80"           # Your PC browser → localhost:3000
+    depends_on:
+      - backend
+
+  backend:
+    build: ./hue-backend
+    platform: linux/amd64
+    ports:
+      - "2308:2308"         # Change 3001 to your backend's actual port
+    environment:
+      - NODE_ENV=development   # Or production later
+      # Add other env vars here later, e.g.:
+      # - DATABASE_URL=...
